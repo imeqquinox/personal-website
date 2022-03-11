@@ -1,50 +1,22 @@
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, PerspectiveCamera, Text } from '@react-three/drei';
-
 import './App.css';
+import Sidebar from './components/Sidebar.js';
+import HomePage from './components/HomePage.js';
+import AboutPage from './components/AboutPage.js';
+import SkillsPage from './components/SkillsPage.js';
+import PortfolioPage from './components/PortfolioPage';
+import ContactPage from './components/ContactPage';
 
 function App() {
   return (
-    <div>
-      <Canvas id='title__canvas'>
-        <PerspectiveCamera position={[0, 0, 0]} makeDefault={true} />
-        {/* <OrbitControls /> */}
-        <Text scale={[2, 2, 2]} position={[0, 0.25, -5]} color="black" anchorX="center" anchorY="middle">
-          Lewis Wilson
-        </Text>
-        <Text scale={[1, 1, 1]} position={[0, 0, -5]} color="black" anchorX="center" anchorY="middle">
-          eqquinox
-        </Text>
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[-2, 5, 2]} />
-      </Canvas>
-      <Canvas id='about__canvas'>
-        <PerspectiveCamera position={[0, 0, 0]} makeDefault={true} />
-        <Text scale={[2, 2, 2]} position={[0, 0.25, -5]} color="black" anchorX="center" anchorY="middle">
-          About
-        </Text>
-        <Text scale={[1, 1, 1]} position={[0, 0, -5]} color="black" anchorX="center" anchorY="middle">
-          Hi my name is Lewis
-        </Text>
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[-2, 5, 2]} />
-      </Canvas>
-      <Canvas id='works__canvas'>
-        <PerspectiveCamera position={[0, 0, 0]} makeDefault={true} />
-        <Text scale={[2, 2, 2]} position={[0, 0.25, -5]} color="black" anchorX="center" anchorY="middle">
-          Works
-        </Text>
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[-2, 5, 2]} />
-      </Canvas>
-      <Canvas id='contact__canvas'>
-        <PerspectiveCamera position={[0, 0, 0]} makeDefault={true} />
-        <Text scale={[2, 2, 2]} position={[0, 0.25, -5]} color="black" anchorX="center" anchorY="middle">
-          Contact
-        </Text>
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[-2, 5, 2]} />
-      </Canvas>
+    <div className='app_container'>
+      <Sidebar />
+      <div className='main_container'>
+        <HomePage />
+        <AboutPage />
+        <SkillsPage />
+        <PortfolioPage />
+        <ContactPage />
+      </div>
     </div>
   );
 }

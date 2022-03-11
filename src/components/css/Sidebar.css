@@ -1,0 +1,30 @@
+.sidebar {
+	background-color: bisque;
+	width: 25%;
+	height: 100%;
+	margin: 20px;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 5%;
+	overflow: auto;
+}
+
+h1 {
+	text-align: center;
+}
+
+h5 {
+	text-align: center;
+}
+
+nav {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+}
+
+.footer {
+	margin: 15px;
+	text-align: center;
+}
