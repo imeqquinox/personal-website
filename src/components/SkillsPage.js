@@ -11,7 +11,7 @@ let skills = ["C++/C#", "HTML", "CSS", "Javascript", "React", "Unity", "GitHub",
 
 function TextItem({ children, position}) {
   const ref = useRef();
-  console.log(ref.current);
+  //console.log(ref.current);
 
   useFrame((state, delta) => {
     ref.current.rotation.x += 0.01;
@@ -19,8 +19,6 @@ function TextItem({ children, position}) {
 
     //ref.current.children[0].lookAt(0, 0, 3);
   })
-
-  //useEffect()
   
   return (
     <group ref={ref}>
