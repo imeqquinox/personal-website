@@ -19,7 +19,7 @@
 	justify-content: center;
 }
 
-img {
+.sidebar_profile img {
 	width: 150px;
 	height: 150px;
 	object-fit: cover;
