@@ -9,9 +9,9 @@ function Sidebar() {
   useEffect(() => {
     function handleResize() {
       if (window.innerWidth >= 768) {
-        setBurger(true);
-      } else {
         setBurger(false);
+      } else {
+        setBurger(true);
       }
     }
     window.addEventListener('resize', handleResize);
@@ -20,7 +20,7 @@ function Sidebar() {
   // Toggle for burger
   const [burger, setBurger] = useState(false);
   const toggleBurger = () => {
-    setBurger(!burger);
+    setBurger(!burger)
   }
 
   return (
@@ -37,7 +37,6 @@ function Sidebar() {
           <ul>
             <li><a className='nav_link' href='#Home'>Home</a></li>
             <li><a className='nav_link' href='#About'>About</a></li>
-            <li><a className='nav_link' href='#Skills'>Skills</a></li>
             <li><a className='nav_link' href='#Portfolio'>Portfolio</a></li>
             <li><a className='nav_link' href='#Contact'>Contact</a></li>
           </ul>
@@ -50,7 +49,7 @@ function Sidebar() {
 
       <style jsx>{`
         .sidebar {
-          display: ${ burger ? 'fixed' : "none" };
+          display: ${ burger ? 'none' : "fixed" };
         }
       `}</style>
 

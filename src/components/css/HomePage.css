@@ -1,2 +1,24 @@
 .homepage {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.homepage_title {
+	position: absolute;
+	right: 0;
+	left: calc(100vw - 90vw);
+	top: 0;
+}
+
+.homepage h1 {
+	font-size: 5rem;
+	padding-left: 20px;
+}
+
+.homepage span {
+	font-size: 2rem;
+	padding-left: 20px;
+	color: #e7fefe;
 }
