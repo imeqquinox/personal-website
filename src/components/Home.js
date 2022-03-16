@@ -2,7 +2,7 @@ import React from 'react'
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera, Text } from '@react-three/drei';
 
-import './css/HomePage.css';
+import './css/Home.css';
 
 function Box() {
   return (
@@ -13,9 +13,9 @@ function Box() {
   )
 }
 
-function HomePage() {
+function Home() {
   return (
-    <section className='homepage'>
+    <section className='homepage' id='home'>
       {/* <Canvas>
         <Box />
         <pointLight position={[10, 10, 10]} />
@@ -28,4 +28,4 @@ function HomePage() {
   )
 }
 
-export default HomePage
+export default Home

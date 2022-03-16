@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './css/PortfolioPage.css';
+import './css/Portfolio.css';
 import HonourPreview from '../assets/honour1.PNG';
 import AudioPreview from '../assets/audio1.PNG';
 import IWMPreview from '../assets/IWM1.PNG';
@@ -9,9 +9,9 @@ import GraphicsPreview from '../assets/graphics1.PNG';
 
 import ProjectThumbnail from './ProjectThumbnail.js';
 
-function PortfolioPage() {
+function Portfolio() {
   return (
-    <div className='portfolio'>
+    <section className='portfolio' id='portfolio'>
         <h1>Portfolio</h1>
         <h2>Game Development</h2>
         <div className='game_portfolio'>
@@ -39,8 +39,8 @@ function PortfolioPage() {
 
         <h2>Web Development</h2>
         <p>Examples of web development here</p>
-    </div>
+    </section>
   )
 }
 
-export default PortfolioPage
+export default Portfolio

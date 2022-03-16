@@ -35,10 +35,10 @@ function Sidebar() {
 
         <nav>
           <ul>
-            <li><a className='nav_link' href='#Home'>Home</a></li>
-            <li><a className='nav_link' href='#About'>About</a></li>
-            <li><a className='nav_link' href='#Portfolio'>Portfolio</a></li>
-            <li><a className='nav_link' href='#Contact'>Contact</a></li>
+            <li><a className='nav_link' href='#home'>Home</a></li>
+            <li><a className='nav_link' href='#about'>About</a></li>
+            <li><a className='nav_link' href='#portfolio'>Portfolio</a></li>
+            <li><a className='nav_link' href='#contact'>Contact</a></li>
           </ul>
         </nav>
 

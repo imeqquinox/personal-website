@@ -1,12 +1,12 @@
 import React from 'react'
 import { Canvas } from '@react-three/fiber';
 
-import './css/AboutPage.css';
+import './css/About.css';
 import TextSphere from './TextSphere.js';
 
-function AboutPage() {
+function About() {
   return (
-    <section className='about'>
+    <section className='about' id='about'>
         <div className='about_info'>
           <h1>About me</h1>
           <p>
@@ -33,4 +33,4 @@ function AboutPage() {
   )
 }
 
-export default AboutPage
+export default About

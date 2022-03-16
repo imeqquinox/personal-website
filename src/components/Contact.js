@@ -1,16 +1,16 @@
 import React from 'react'
 
-function ContactPage() {
+function Contact() {
   return (
-    <div>
+    <section className='contact' id='contact'>
         <h1>Contact</h1>
 
         <span>Email: ...</span> <br />
         <span>LinkedIn: ...</span> <br />
         <span>GitHub: ...</span> <br />
         <p>Potential contact form here</p>
-    </div>
+    </section>
   )
 }
 
-export default ContactPage
+export default Contact
