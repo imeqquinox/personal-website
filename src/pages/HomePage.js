@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+
+import './css/HomePage.css';
 
 import Home from '../components/Home.js';
 import About from '../components/About.js';
