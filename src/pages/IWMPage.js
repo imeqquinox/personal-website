@@ -1,11 +1,21 @@
 import React from 'react'
 
 import './css/IWMPage.css';
+import ImageSlider from '../components/ImageSlider';
+
+import IWM1 from '../assets/IWM1.PNG';
+import IWM2 from '../assets/IWM2.PNG';
+import IWM3 from '../assets/IWM3.PNG';
+import IWM4 from '../assets/IWM4.PNG';
 
 function IWMPage() {
+  const images = [IWM1, IWM2, IWM3, IWM4];
+
   return (
     <section className='IWM_project'>
         <h1>Imperial War Museum Game Jam</h1>
+
+        <ImageSlider images={images} alt="IWM Screenshot"/>
 
         <p>
             <b>

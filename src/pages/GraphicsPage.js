@@ -1,11 +1,21 @@
 import React from 'react';
 
 import './css/GraphicsPage.css';
+import ImageSlider from '../components/ImageSlider';
+
+import Graphics1 from '../assets/graphics1.PNG';
+import Graphics2 from '../assets/graphics2.PNG';
+import Graphics3 from '../assets/graphics3.PNG';
+import Graphics4 from '../assets/graphics4.PNG';
 
 function GraphicsPage() {
+  const images = [Graphics1, Graphics2, Graphics3, Graphics4];
+
   return (
     <section className='graphics_project'>
         <h1>Graphics Programming (OpenGL)</h1>
+
+        <ImageSlider images={images} alt='Graphics Programming Screenshot' />
 
         <p>
             <b>

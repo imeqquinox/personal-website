@@ -1,11 +1,23 @@
 import React from 'react';
 
 import './css/AudioPage.css';
+import ImageSlider from '../components/ImageSlider';
+
+import Audio1 from '../assets/audio1.PNG';
+import Audio2 from '../assets/audio2.PNG';
+import Audio3 from '../assets/audio3.PNG';
+import Audio4 from '../assets/audio4.PNG';
 
 function AudioPage() {
+  const images = [Audio1, Audio2, Audio3, Audio4];
+ 
   return (
     <section className='audio_programming'>
         <h1>Audio Programming</h1>
+
+        <ImageSlider images={images} alt="Audio Programming Screenshot"/>
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Se1pQrdtRyI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
         <p>
             <b>

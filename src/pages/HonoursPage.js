@@ -9,6 +9,8 @@ function HonoursPage() {
     <section className='honours_project'> 
         <h1>Honours Project - Affective Gaming</h1>
 
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/rO7FT2B1M_A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        
         <p>
             <b>
                 Platform: Windows <br/>

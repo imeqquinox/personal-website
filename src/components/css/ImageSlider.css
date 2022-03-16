@@ -1,0 +1,46 @@
+.image_slider {
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.image {
+	border-radius: 10px;
+}
+
+.back_arrow {
+	cursor: pointer;
+	top: 50%;
+	margin-right: 10px;
+	z-index: 2;
+}
+
+.forward_arrow {
+	cursor: pointer;
+	top: 50%;
+	margin-left: 10px;
+	z-index: 2;
+}
+
+.slide {
+	opacity: 0;
+	transition-duration: 1s ease;
+	transform: scale(0.9);
+}
+
+.slide.active {
+	opacity: 1;
+	transition-duration: 1s;
+	transform: scale(1);
+}
+
+.icon_wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.position_icon_active {
+	background-color: black;
+}

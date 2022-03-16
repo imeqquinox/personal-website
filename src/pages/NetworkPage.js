@@ -1,11 +1,19 @@
 import React from 'react';
 
 import './css/NetworkPage.css';
+import ImageSlider from '../components/ImageSlider';
+
+import Network1 from '../assets/network1.PNG';
+import Network2 from '../assets/network2.PNG';
 
 function NetworkPage() {
+  const images = [Network1, Network2];
+
   return (
     <section className='network_project'>
         <h1>Networking Systems for Game Development</h1>
+
+        <ImageSlider images={images} alt='Networking Screenshot'/>
 
         <p>
             <b>
