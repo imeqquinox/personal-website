@@ -25,17 +25,17 @@ function Contact() {
       <div className='form_container'>
         <form onSubmit={SendEmail}>
           <label>Name</label>
-          <input type='text' name='name' />
+          <input className='form_input' type='text' name='name' required/>
 
           <label>Email</label>
-          <input type='email' name='email' />
+          <input className='form_input' type='email' name='email' required/>
 
           <label>Subject</label>
-          <input type='text' name='subject' />
+          <input className='form_input' type='text' name='subject' required/>
 
           <label>Message</label>
-          <textarea name='message' rows='4' />
-          <input type='submit' value='Send' />
+          <textarea className='form_text' name='message' rows='8' required/>
+          <input className='form_button' type='submit' value='Send' />
         </form>
       </div>
     </section>

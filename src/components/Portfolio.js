@@ -6,8 +6,11 @@ import AudioPreview from '../assets/audio1.PNG';
 import IWMPreview from '../assets/IWM1.PNG';
 import NetworkPreview from '../assets/network1.PNG';
 import GraphicsPreview from '../assets/graphics1.PNG';
+import ShopPreview from '../assets/shop-clone1.png';
+import WordlePreview from '../assets/wordle1.png';
 
 import ProjectThumbnail from './ProjectThumbnail.js';
+import WebsiteThumbnail from './WebsiteThumbnail.js';
 
 function Portfolio() {
   return (
@@ -38,7 +41,22 @@ function Portfolio() {
         </div>
 
         <h2>Web Development</h2>
-        <p>Examples of web development here</p>
+        <div className='web_portfolio'>
+          <WebsiteThumbnail 
+            image={ShopPreview} 
+            title='Craftware'
+            subtitle='Online shop clone'
+            site='https://adoring-mccarthy-133f46.netlify.app/'
+            code='https://github.com/imeqquinox/shop-clone'
+          />
+          <WebsiteThumbnail 
+            image={WordlePreview}
+            title='Wordle'
+            subtitle='Wordle clone'
+            site=''
+            code='https://github.com/imeqquinox/wordle-clone'
+          />
+        </div>
     </section>
   )
 }
