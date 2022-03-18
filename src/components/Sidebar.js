@@ -1,27 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect } from 'react';
 
 import './css/Sidebar.css';
+import BurgerMenu from './BurgerMenu';
 import ProfileImg from '../assets/profile.jpg';
 
 function Sidebar() {
+  // Toggle for burger
+  const [burger, setBurger] = useState(false);
+
+  const HandleResize = () => {
+    const vh = window.innerHeight * 0.01; 
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', HandleResize);
+  });
 
   // Check window resize and update burger state
-  useEffect(() => {
+  useLayoutEffect(() => {
     function handleResize() {
-      if (window.innerWidth >= 768) {
+      if (window.innerWidth >= 767) {
         setBurger(false);
       } else {
         setBurger(true);
       }
     }
-    window.addEventListener('resize', handleResize);
-  })
+    
+      window.addEventListener('resize', handleResize);
 
-  // Toggle for burger
-  const [burger, setBurger] = useState(false);
-  const toggleBurger = () => {
-    setBurger(!burger)
-  }
+      return _ => {
+        window.removeEventListener('resize', handleResize);
+    }
+  });
 
   return (
     <div className='sidebar_container'>
@@ -35,10 +46,10 @@ function Sidebar() {
 
         <nav>
           <ul>
-            <li><a className='nav_link' href='#home'>Home</a></li>
-            <li><a className='nav_link' href='#about'>About</a></li>
-            <li><a className='nav_link' href='#portfolio'>Portfolio</a></li>
-            <li><a className='nav_link' href='#contact'>Contact</a></li>
+            <li><a className='nav_link' href='/#home'>Home</a></li>
+            <li><a className='nav_link' href='/#about'>About</a></li>
+            <li><a className='nav_link' href='/#portfolio'>Portfolio</a></li>
+            <li><a className='nav_link' href='/#contact'>Contact</a></li>
           </ul>
         </nav>
 
@@ -47,17 +58,13 @@ function Sidebar() {
         </footer>
       </aside>
 
-      <style jsx>{`
+      <style jsx='true'>{`
         .sidebar {
-          display: ${ burger ? 'none' : "fixed" };
+          display: ${ burger ? 'none' : "block" };
         }
       `}</style>
 
-      <div className='nav_burger' onClick={toggleBurger}>
-        <div className='bar'></div>
-        <div className='bar'></div>
-        <div className='bar'></div>
-      </div>
+      <BurgerMenu state={burger} setBurger={setBurger}/>
     </div>
   )
 }

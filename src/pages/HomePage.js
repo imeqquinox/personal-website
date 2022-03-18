@@ -9,7 +9,7 @@ import Contact from '../components/Contact.js';
 
 function HomePage() {
   return (
-    <div>
+    <div className='home_page'>
         <Home />
         <About />
         <Portfolio />

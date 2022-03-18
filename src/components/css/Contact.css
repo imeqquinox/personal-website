@@ -1,8 +1,10 @@
+.contact_wrapper {
+	background-color: var(--accent);
+}
+
 .contact {
 	display: flex;
 	flex-direction: column;
-	margin-inline: auto;
-	width: min(100%, 90%);
 	margin-block: 30px;
 }
 
@@ -21,14 +23,16 @@
 	border: none;
 	border-bottom: 2px solid purple;
 	height: 25px;
-	background-color: #00aab3;
+	background-color: var(--accent);
+	font-family: "Questrial", sans-serif;
 }
 
 .form_text {
 	border: none;
 	border-bottom: 2px solid purple;
-	background-color: #00aab3;
+	background-color: var(--accent);
 	resize: none;
+	font-family: "Questrial", sans-serif;
 }
 
 textarea:focus {
@@ -40,9 +44,9 @@ input:focus {
 }
 
 .form_button {
-	color: #e7fefe;
+	color: var(--primary);
 	padding: 10px;
-	background-color: #116466;
+	background-color: var(--text);
 	border-radius: 5px;
 	border: none;
 	cursor: pointer;

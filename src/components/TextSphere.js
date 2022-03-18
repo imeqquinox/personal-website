@@ -1,4 +1,4 @@
-import React, { Suspense, useRef } from 'react'
+import React, { Suspense, useRef, useEffect } from 'react'
 import { useFrame } from '@react-three/fiber';
 import { Text } from '@react-three/drei';
 import * as THREE from 'three';
@@ -12,8 +12,8 @@ function TextItem({ children, position}) {
     //console.log(ref.current);
 
     useFrame((state, delta) => {
-    ref.current.rotation.x += 0.01;
-    ref.current.rotation.y += 0.01; 
+    //ref.current.rotation.x += 0.01;
+    //ref.current.rotation.y += 0.01; 
 
     //ref.current.children[0].lookAt(0, 0, 3);
     })
@@ -28,8 +28,10 @@ function TextItem({ children, position}) {
 }
 
 function TextSphere() {
+    const ref = useRef();
+
     return ( 
-        <group position={[0, 0, 0]}>
+        <group ref={ref} position={[0, 0, 0]} scale={[1.5, 1.5, 1.5]} rotation={[-0.2, -0.2, 0]}>
             {skills.map((skill, index) => (
                 <TextItem key={index} position={vertices[index]} children={skill} />
             ))}

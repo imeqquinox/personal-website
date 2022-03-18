@@ -1,23 +1,32 @@
+.background_wrapper {
+	background-color: var(--accent);
+}
+
 .about {
 	height: 500px;
 	display: flex;
 	flex-direction: row;
-	background-color: #116466;
-	color: #e7fefe;
-	padding: 20px;
+	color: var(--black-text);
+}
+
+.about_info {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-right: 20px;
 }
 
 .about h1 {
 	text-align: center;
-	color: black;
+	color: var(--black-text);
 }
 
 .about p {
-	margin-inline: auto;
-	width: min(90%, 70.5rem);
+	text-align: center;
 }
 
-@media screen and (max-width: 768px) {
+/* Tables and mobile */
+@media screen and (max-width: 767px) {
 	.about {
 		flex-direction: column;
 	}

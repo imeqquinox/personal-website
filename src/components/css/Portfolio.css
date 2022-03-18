@@ -1,22 +1,23 @@
 .portfolio {
-	margin-inline: auto;
-	width: min(100%, 90%);
+	height: auto;
 }
 
 .game_portfolio {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .web_portfolio {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .portfolio h2 {
-	color: #e7fefe;
+	color: var(--text);
 }
 
 /* Project thumbnails */
@@ -59,7 +60,8 @@
 
 /* Website thumbnails */
 .website_thumbnail {
-	background-color: #116466;
+	position: relative;
+	background-color: var(--secondary);
 	display: flex;
 	flex-direction: column;
 	margin: 10px;
@@ -79,11 +81,11 @@
 
 .website_title {
 	font-size: 2rem;
-	color: #fff7d6;
+	color: var(--accent);
 }
 
 .website_subtitle {
-	color: #e7fefe;
+	color: var(--text);
 }
 
 .website_links {

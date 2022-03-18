@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera, Text } from '@react-three/drei';
 
@@ -14,6 +14,16 @@ function Box() {
 }
 
 function Home() {
+  // Fix vh issue for mobile
+  const HandleResize = () => {
+    const vh = window.innerHeight * 0.01; 
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', HandleResize);
+  });
+
   return (
     <section className='homepage' id='home'>
       {/* <Canvas>
