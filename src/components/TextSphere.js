@@ -1,42 +1,55 @@
-import React, { Suspense, useRef, useEffect } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
 import { useFrame } from '@react-three/fiber';
 import { Text } from '@react-three/drei';
 import * as THREE from 'three';
 
-let vertices = [new THREE.Vector3(-0.5, 1, 0), new THREE.Vector3(0.5, 1, 0), new THREE.Vector3(1, 0, 0), new THREE.Vector3(0.5, -1, 0),
-    new THREE.Vector3(-0.5, -1, 0), new THREE.Vector3(-1, 0, 0), new THREE.Vector3(0, 0, -1), new THREE.Vector3(0, 0, 1)]; 
-let skills = ["C++/C#", "HTML", "CSS", "Javascript", "React", "Unity", "GitHub", "ThreeJS"];
+let skills = ["C++/C#", "HTML", "CSS", "Javascript", "React", "Unity", "GitHub", "ThreeJS", "Test"];
 
-function TextItem({ children, position}) {
-    const ref = useRef();
-    //console.log(ref.current);
+function TextItem({ children, ...props }) {
+    const color = new THREE.Color();
+    const text = useRef();
+    const [hovered, setHovered] = useState(false);
+    const over = (e) => (e.stopPropagation(), setHovered(true));
+    const out = () => setHovered(false);
 
-    useFrame((state, delta) => {
-    //ref.current.rotation.x += 0.01;
-    //ref.current.rotation.y += 0.01; 
-
-    //ref.current.children[0].lookAt(0, 0, 3);
+    useFrame(({ camera }) => {
+        text.current.lookAt(camera.position);
+        
+        text.current.material.color.lerp(color.set(hovered ? '#0f1626' : 'white'), 0.1);
     })
 
     return (
-        <group ref={ref}>
-            <Suspense fallback={null}>
-                <Text position={position} children={children}/>
-            </Suspense>
-        </group>
+        <Text ref={text} onPointerOver={over} onPointerOut={out} {...props} children={children}/>
     )
 }
 
-function TextSphere() {
-    const ref = useRef();
+function TextSphere({ count = 3, radius = 20 }) {
+    const ref = useRef(); 
 
-    return ( 
-        <group ref={ref} position={[0, 0, 0]} scale={[1.5, 1.5, 1.5]} rotation={[-0.2, -0.2, 0]}>
-            {skills.map((skill, index) => (
-                <TextItem key={index} position={vertices[index]} children={skill} />
-            ))}
+    const words = useMemo(() => {
+        const temp = []; 
+        const spherical = new THREE.Spherical();
+        const phiSpan = Math.PI / (count + 1);
+        const thetaSpan = (Math.PI * 2) / count; 
+        let x = 0; 
+        for (let i = 1; i < count + 1; i++) {
+            for (let j = 0; j < count; j++) {
+                temp.push([new THREE.Vector3().setFromSpherical(spherical.set(radius, phiSpan * i, thetaSpan * j)), skills[x]]);
+                x++;
+            }
+        }
+        return temp;
+    }, [count, radius]);
+
+    useFrame(() => {
+        ref.current.rotation.y += 0.005;
+    });
+
+    return (
+        <group ref={ref}>
+             {words.map(([pos, word], index) => <TextItem key={index} position={pos} children={word}/>)}
         </group>
-    )
+    );
 }
 
 export default TextSphere
