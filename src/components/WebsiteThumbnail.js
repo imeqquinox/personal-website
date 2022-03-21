@@ -8,7 +8,7 @@ function WebsiteThumbnail(props) {
             <span className='website_title'>{props.title}</span><br/>
             <span className='website_subtitle'>{props.subtitle}</span>
             <div className='website_links'>
-                <a className='website_link' href={props.site} target='_blank' rel='noreferrer'>Live Site</a>
+                <a className='website_link' href={props.site} target='_blank' rel='noreferrer'>{props.siteText}</a>
                 <a className='website_link' href={props.code} target='_blank' rel='noreferrer'>View Code</a>
             </div>
         </div>

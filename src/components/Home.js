@@ -1,17 +1,8 @@
 import React, { useEffect } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, PerspectiveCamera, Text } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
 
 import './css/Home.css';
-
-function Box() {
-  return (
-    <mesh>
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={'orange'}/>
-    </mesh>
-  )
-}
+import Particles from './Particles';
 
 function Home() {
   // Fix vh issue for mobile
@@ -26,14 +17,14 @@ function Home() {
 
   return (
     <section className='homepage' id='home'>
-      {/* <Canvas>
-        <Box />
-        <pointLight position={[10, 10, 10]} />
-      </Canvas> */}
-      {/* <div className='homepage_title'> */}
+      <Canvas pixelRatio={[1, 2]} camera={{ position: [0, 0, 3] }}>
+        <Particles count={100} />
+      </Canvas>
+
+      <div className='homepage_title'>
         <h1>Hi! <br/>I'm Lewis</h1>
         <span>Front End Developer - Software Engineer</span>
-      {/* </div> */}
+      </div>
     </section>
   )
 }

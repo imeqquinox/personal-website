@@ -26,7 +26,7 @@ function About() {
           </div>
           
           <Suspense fallback={null}>
-            <Canvas dpr={[1, 2]}camera={{ position: [0, 0, 1.5], fov: 90 }}>
+            <Canvas  dpr={[1, 2]}camera={{ position: [0, 0, 1.5], fov: 90 }}>
               <fog attach="fog" args={['#202025', 0, 10]} />
               <TextSphere count={3} radius={0.75}/>
             </Canvas>

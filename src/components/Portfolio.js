@@ -8,6 +8,7 @@ import NetworkPreview from '../assets/network1.PNG';
 import GraphicsPreview from '../assets/graphics1.PNG';
 import ShopPreview from '../assets/shop-clone1.png';
 import WordlePreview from '../assets/wordle1.png';
+import MessagingPreview from '../assets/messaging1.PNG';
 
 import ProjectThumbnail from './ProjectThumbnail.js';
 import WebsiteThumbnail from './WebsiteThumbnail.js';
@@ -47,14 +48,24 @@ function Portfolio() {
             title='Craftware'
             subtitle='Online shop clone'
             site='https://adoring-mccarthy-133f46.netlify.app/'
+            siteText='Live Site'
             code='https://github.com/imeqquinox/shop-clone'
           />
           <WebsiteThumbnail 
             image={WordlePreview}
             title='Wordle'
             subtitle='Wordle clone'
-            site=''
+            site='#'
+            siteText='WIP'
             code='https://github.com/imeqquinox/wordle-clone'
+          />
+          <WebsiteThumbnail 
+            image={MessagingPreview}
+            title='Messaging App'
+            subtitle='Front and backend messaging app'
+            site='#'
+            siteText='WIP'
+            code='https://github.com/imeqquinox/messaging-app'
           />
         </div>
     </section>

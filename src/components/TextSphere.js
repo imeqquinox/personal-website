@@ -3,7 +3,7 @@ import { useFrame } from '@react-three/fiber';
 import { Text } from '@react-three/drei';
 import * as THREE from 'three';
 
-let skills = ["C++/C#", "HTML", "CSS", "Javascript", "React", "Unity", "GitHub", "ThreeJS", "Test"];
+let skills = ["C++/C#", "HTML", "CSS", "Javascript", "React", "Unity", "GitHub", "ThreeJS", "OOP"];
 
 function TextItem({ children, ...props }) {
     const color = new THREE.Color();

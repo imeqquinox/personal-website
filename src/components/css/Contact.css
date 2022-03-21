@@ -8,6 +8,10 @@
 	margin-block: 30px;
 }
 
+.contact h1 {
+	font-size: 2rem;
+}
+
 .form_container {
 	display: flex;
 	justify-content: center;
@@ -17,11 +21,12 @@
 	display: flex;
 	flex-direction: column;
 	width: 50%;
+	gap: 5px;
 }
 
 .form_input {
 	border: none;
-	border-bottom: 2px solid purple;
+	border-bottom: 2px solid var(--secondary);
 	height: 25px;
 	background-color: var(--accent);
 	font-family: "Questrial", sans-serif;
@@ -29,7 +34,7 @@
 
 .form_text {
 	border: none;
-	border-bottom: 2px solid purple;
+	border-bottom: 2px solid var(--secondary);
 	background-color: var(--accent);
 	resize: none;
 	font-family: "Questrial", sans-serif;
@@ -44,10 +49,12 @@ input:focus {
 }
 
 .form_button {
-	color: var(--primary);
+	color: var(--black-text);
 	padding: 10px;
 	background-color: var(--text);
 	border-radius: 5px;
-	border: none;
+	border: 1px solid grey;
 	cursor: pointer;
+	width: 50%;
+	align-self: center;
 }

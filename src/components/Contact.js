@@ -11,7 +11,11 @@ function Contact() {
     EmailJS.sendForm('service_8yywu54', 'template_6srhn5g', event.target, 'AMQP6AKoXSh4zayMk')
       .then((result) => {
         console.log(result.text);
+        if (result.text === 'OK') {
+          alert("Message sent!");
+        }
       }, (error) => {
+        alert("Sorry something went wrong, please try again.")
         console.log(error.text);
       });
 
