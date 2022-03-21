@@ -1,9 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import EmailJS from '@emailjs/browser'
 
 import './css/Contact.css';
 
 function Contact() {
+  const observer = new IntersectionObserver(entries => {
+    
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('contact_fade');
+      }
+    })
+  });
+
+  useEffect(() => {
+    observer.observe(document.querySelector('.contact'));
+  })
 
   function SendEmail(event) {
     event.preventDefault(); 

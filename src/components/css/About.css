@@ -33,3 +33,19 @@
 		flex-direction: column;
 	}
 }
+
+/* Section side animation */
+.about_fade {
+	animation-name: side-fade-left;
+	animation-duration: 3.5s;
+	animation-iteration-count: 1;
+}
+
+@keyframes side-fade-left {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(0%);
+	}
+}

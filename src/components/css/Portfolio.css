@@ -109,3 +109,19 @@
 .website_link:hover {
 	background-color: #007e85;
 }
+
+/* Section side animation */
+.portfolio_fade {
+	animation-name: side-fade-right;
+	animation-duration: 3.5s;
+	animation-iteration-count: 1;
+}
+
+@keyframes side-fade-right {
+	0% {
+		transform: translateX(100%);
+	}
+	100% {
+		transform: translateX(0%);
+	}
+}

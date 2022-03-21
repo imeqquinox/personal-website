@@ -1,10 +1,23 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useEffect } from 'react'
 import { Canvas } from '@react-three/fiber';
 
 import './css/About.css';
 import TextSphere from './TextSphere.js';
 
 function About() {
+  const observer = new IntersectionObserver(entries => {
+    
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('about_fade');
+      }
+    })
+  });
+
+  useEffect(() => {
+    observer.observe(document.querySelector('.about'));
+  })
+
   return (
     <div className='background_wrapper'>
       <section className='about' id='about'>

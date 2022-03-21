@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import './css/Portfolio.css';
 import HonourPreview from '../assets/honour1.PNG';
@@ -14,6 +14,19 @@ import ProjectThumbnail from './ProjectThumbnail.js';
 import WebsiteThumbnail from './WebsiteThumbnail.js';
 
 function Portfolio() {
+  const observer = new IntersectionObserver(entries => {
+    
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('portfolio_fade');
+      }
+    })
+  });
+
+  useEffect(() => {
+    observer.observe(document.querySelector('.portfolio'));
+  })
+
   return (
     <section className='portfolio' id='portfolio'>
         <h1>Portfolio</h1>

@@ -5,6 +5,15 @@ import './css/Home.css';
 import Particles from './Particles';
 
 function Home() {
+  const observer = new IntersectionObserver(entries => {
+    
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('homepage_fade');
+      }
+    })
+  });
+  
   // Fix vh issue for mobile
   const HandleResize = () => {
     const vh = window.innerHeight * 0.01; 
@@ -13,6 +22,7 @@ function Home() {
 
   useEffect(() => {
     window.addEventListener('resize', HandleResize);
+    observer.observe(document.querySelector('.homepage'));
   });
 
   return (
