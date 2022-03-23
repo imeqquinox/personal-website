@@ -30,6 +30,34 @@ function Portfolio() {
   return (
     <section className='portfolio' id='portfolio'>
         <h1>Portfolio</h1>
+        <h2>Web Development</h2>
+        <div className='web_portfolio'>
+          <WebsiteThumbnail 
+            image={ShopPreview} 
+            title='Craftware'
+            subtitle='Online shop clone'
+            site='https://adoring-mccarthy-133f46.netlify.app/'
+            siteText='Live Site'
+            code='https://github.com/imeqquinox/shop-clone'
+          />
+          <WebsiteThumbnail 
+            image={WordlePreview}
+            title='Wordle'
+            subtitle='Wordle clone'
+            site='https://velvety-puffpuff-da927e.netlify.app/'
+            siteText='Live Site'
+            code='https://github.com/imeqquinox/wordle-clone'
+          />
+          <WebsiteThumbnail 
+            image={MessagingPreview}
+            title='Messaging App'
+            subtitle='Front and backend messaging app'
+            site='#'
+            siteText='WIP'
+            code='https://github.com/imeqquinox/messaging-app'
+          />
+        </div>
+
         <h2>Game Development</h2>
         <div className='game_portfolio'>
           <ProjectThumbnail 
@@ -51,34 +79,6 @@ function Portfolio() {
           <ProjectThumbnail 
             image={GraphicsPreview}
             title='Graphics Programming (OpenGL)'
-          />
-        </div>
-
-        <h2>Web Development</h2>
-        <div className='web_portfolio'>
-          <WebsiteThumbnail 
-            image={ShopPreview} 
-            title='Craftware'
-            subtitle='Online shop clone'
-            site='https://adoring-mccarthy-133f46.netlify.app/'
-            siteText='Live Site'
-            code='https://github.com/imeqquinox/shop-clone'
-          />
-          <WebsiteThumbnail 
-            image={WordlePreview}
-            title='Wordle'
-            subtitle='Wordle clone'
-            site='#'
-            siteText='WIP'
-            code='https://github.com/imeqquinox/wordle-clone'
-          />
-          <WebsiteThumbnail 
-            image={MessagingPreview}
-            title='Messaging App'
-            subtitle='Front and backend messaging app'
-            site='#'
-            siteText='WIP'
-            code='https://github.com/imeqquinox/messaging-app'
           />
         </div>
     </section>
