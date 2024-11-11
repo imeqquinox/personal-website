@@ -1,7 +1,7 @@
 
 export default function About() {
     return (
-        <section className="p-8 flex items-center text-center flex-col bg-off-black text-off-white">
+        <section className="p-8 flex items-center text-center flex-col bg-black-grain text-off-white">
             <h1 className="pb-4 font-notoSans font-medium text-xl">About</h1>
             <div className="font-roboto text-base [&>*]:pb-4">
                 <p>Hi, I&apos;m Lewis I usually go by eqquinox online. I&apos;m a software engineer based in Edinburgh, Scotland.</p>
