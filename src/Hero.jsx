@@ -1,63 +1,11 @@
 import { Canvas, useThree, useLoader, useFrame } from "@react-three/fiber";
 import { Environment, OrbitControls  } from "@react-three/drei";
-import { RGBELoader, ThreeMFLoader } from "three/examples/jsm/Addons.js";
+import { RGBELoader } from "three/examples/jsm/Addons.js";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 
-const vertexShader = `
-    varying vec3 worldNormal;
-    varying vec3 eyeVector;
-
-    void main() {
-        vec4 worldPos = modelMatrix * vec4(position, 1.0);
-        vec4 mvPosition = viewMatrix * worldPos;
-
-        gl_Position = projectionMatrix * mvPosition;
-
-        vec3 transformedNormal = normalMatrix * normal;
-        worldNormal = normalize(transformedNormal);
-
-        eyeVector = normalize(worldPos.xyz - cameraPosition);
-    }
-`;
-
-const fragmentShader = `
-    uniform float uIorR;
-    uniform float uIorG;
-    uniform float uIorB; 
-    uniform sampler2D uTexture;
-    uniform vec2 winResolution;
-
-    varying vec3 worldNormal;
-    varying vec3 eyeVector;
-
-    void main() {
-        float iorRatioRed = 1.0/uIorR;
-        float iorRatioGreen = 1.0/uIorG;
-        float iorRatioBlue = 1.0/uIorB;
-
-        vec3 color = vec3(1.0);
-
-        vec2 uv = gl_FragCoord.xy / winResolution.xy;
-        vec3 normal = worldNormal;
-
-        vec3 refractVecR = refract(eyeVector, normal, iorRatioRed);
-        vec3 refractVecG = refract(eyeVector, normal, iorRatioGreen);
-        vec3 refractVecB = refract(eyeVector, normal, iorRatioBlue);
-        
-        float R = texture2D(uTexture, uv + refractVecR.xy).r;
-        float G = texture2D(uTexture, uv + refractVecG.xy).g;
-        float B = texture2D(uTexture, uv + refractVecB.xy).b;
-
-        color.r = R;
-        color.g = G;
-        color.b = B;
-        
-        gl_FragColor = vec4(color, 1.0);
-        #include <tonemapping_fragment>
-        #include <colorspace_fragment>
-    }
-`;
+import vertexShader from "./shaders/vertexShader.glsl";
+import fragmentShader from "./shaders/fragmentShader.glsl";
 
 export default function Hero() {
     const envMap = useLoader(RGBELoader, "./src/assets/environment.hdr");
@@ -67,10 +15,6 @@ export default function Hero() {
            <h1 className="font-italiana text-off-white text-7xl absolute z-10">eqquinox</h1>
             <Canvas>
                 <Environment files="./src/assets/test.hdr" />
-                {/* <Sphere position={[-1, 2, 0]} environment={envMap} />
-                <Sphere position={[1, -2, 0]} environment={envMap} />
-                <Sphere environment={Environment} /> */}
-                {/* <PentagonPanels /> */}
                 <Panels />
                 <mesh position={[0, 0, -5]}>
                     <planeGeometry args={[5, 5, 2, 2]} />
@@ -84,56 +28,22 @@ export default function Hero() {
     )
 }
 
-function Sphere(props) {
-    const mat = useRef();
-    const { viewport } = useThree();
-    const envMap = useLoader(RGBELoader, "./src/assets/test.hdr");
-   
-    // useFrame(() => {
-    //     if (mat.current) 
-    //         mat.current.uniforms.uTexture.value = envMap;
-    // });
-
-    const uniforms = {
-        uTexture: { value: envMap },
-        uIorR: { value: 1.13 },
-        uIorG: { value: 1.18 },
-        uIorB: { value: 1.22 },
-        winResolution: {
-            value: new THREE.Vector2(
-                window.innerWidth,
-                window.innerHeight
-            ).multiplyScalar(Math.min(window.devicePixelRatio, 2))
-        }
-    };
-
-    return (
-        <group scale={viewport.width / 4}>
-            <mesh position={props.position}>
-                <sphereGeometry args={[1, 32, 32 ]} />
-                <shaderMaterial 
-                    ref={mat}
-                    uniforms={uniforms}
-                    vertexShader={vertexShader}
-                    fragmentShader={fragmentShader}
-                />
-            </mesh>
-        </group>
-    )
-}
-
 function Panels() {
+    const { viewport } = useThree();
     const envMap = useLoader(RGBELoader, "./src/assets/test.hdr");
     const mesh = useRef();
 
-    useFrame(() => {
+    useFrame(({ clock }) => {
         if (mesh.current) {
-            mesh.current.rotation.x += 0.01;
-            mesh.current.rotation.y += 0.01;
+            mesh.current.rotation.x += 0.005;
+            mesh.current.rotation.y += 0.005;
+            mesh.current.material.uniforms.time.value = clock.getElapsedTime();
         }
     }) 
 
     const uniforms = {
+        time: { value: 0 }, 
+        amplitude: { value: 0.001 },
         uTexture: { value: envMap },
         uIorR: { value: 1.13 },
         uIorG: { value: 1.18 },
@@ -149,7 +59,6 @@ function Panels() {
     const geometry = useMemo(() => {
         const icosahedronGeometry = new THREE.IcosahedronGeometry(1, 1);
         const positions = icosahedronGeometry.getAttribute('position');
-        const normals = icosahedronGeometry.getAttribute('normal');
 
         const expandedGeometry = new THREE.BufferGeometry();
         const expandedVertices = [];
@@ -161,18 +70,18 @@ function Panels() {
             const v2 = new THREE.Vector3().fromBufferAttribute(positions, i + 1);
             const v3 = new THREE.Vector3().fromBufferAttribute(positions, i + 2);
 
-            // Calculate the normal for this face (or use the provided normals if available)
-            const normal = new THREE.Vector3().fromBufferAttribute(normals, i);
+            const faceCenter = new THREE.Vector3().addVectors(v1, v2).add(v3).divideScalar(3);
+            const normal = faceCenter.clone().normalize();
 
-            const offsetDist = 0.2;
+            const offsetDist = 0.1;
 
-            v1.addScaledVector(normal, offsetDist);
-            v2.addScaledVector(normal, offsetDist);
-            v3.addScaledVector(normal, offsetDist);
+            const v1Lifted = v1.clone().addScaledVector(normal, offsetDist);
+            const v2Lifted = v2.clone().addScaledVector(normal, offsetDist);
+            const v3Lifted = v3.clone().addScaledVector(normal, offsetDist);
 
-            expandedVertices.push(v1.x, v1.y, v1.z);
-            expandedVertices.push(v2.x, v2.y, v2.z);
-            expandedVertices.push(v3.x, v3.y, v3.z);
+            expandedVertices.push(v1Lifted.x, v1Lifted.y, v1Lifted.z);
+            expandedVertices.push(v2Lifted.x, v2Lifted.y, v2Lifted.z);
+            expandedVertices.push(v3Lifted.x, v3Lifted.y, v3Lifted.z);
 
             expandedNormals.push(normal.x, normal.y, normal.z);
             expandedNormals.push(normal.x, normal.y, normal.z);
@@ -186,7 +95,7 @@ function Panels() {
     }, []);
 
     return (
-        <mesh ref={mesh} position={[-1, 2, 0]}>
+        <mesh ref={mesh} scale={viewport.width / 4}>
             <bufferGeometry attach="geometry" {...geometry} />
             <shaderMaterial 
                 uniforms={uniforms}
