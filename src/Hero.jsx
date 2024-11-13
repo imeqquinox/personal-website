@@ -1,5 +1,5 @@
 import { Canvas, useThree, useLoader, useFrame } from "@react-three/fiber";
-import { Environment, OrbitControls  } from "@react-three/drei";
+import { Environment, OrbitControls, Text  } from "@react-three/drei";
 import { RGBELoader } from "three/examples/jsm/Addons.js";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
@@ -7,36 +7,68 @@ import * as THREE from "three";
 import vertexShader from "./shaders/vertexShader.glsl";
 import fragmentShader from "./shaders/fragmentShader.glsl";
 
-export default function Hero() {
-    const envMap = useLoader(RGBELoader, "./src/assets/environment.hdr");
+import staticVertex from "./shaders/staticVertex.glsl";
+import staticFragment from "./shaders/staticFragment.glsl";
 
+export default function Hero() {
     return (
         <header className="h-screen flex items-center justify-center bg-off-black">
-           <h1 className="font-italiana text-off-white text-7xl absolute z-10">eqquinox</h1>
             <Canvas>
                 <Environment files="./src/assets/test.hdr" />
-                <Panels />
+                <PanelSphere position={[-1.75, 1, 3.75]}/>
+                <PanelSphere position={[1.75, -1, 3.75]}/>
+                <Title />
                 <mesh position={[0, 0, -5]}>
                     <planeGeometry args={[5, 5, 2, 2]} />
                     <meshBasicMaterial color="blue" />
                 </mesh>
                 <ambientLight intensity={0.8} />
                 <directionalLight position={[0, 0, 5]} color="white" />
-                <OrbitControls />
+                {/* <OrbitControls /> */}
             </Canvas>
         </header>
     )
 }
 
-function Panels() {
-    const { viewport } = useThree();
+function Title() {
+    const mesh = useRef();
+
+    const uniforms = {
+        time: { value: 0 }
+    };
+
+    useFrame(({ clock }) => {
+        mesh.current.material.uniforms.time.value = clock.getElapsedTime();
+    })
+
+    return (
+        <Text
+            ref={mesh}
+            font='/Italiana-Regular.ttf'
+            scale={[2, 2, 1]}
+            anchorX="center"
+            anchorY="middle"
+        >
+            <shaderMaterial 
+                uniforms={uniforms}
+                vertexShader={staticVertex}
+                fragmentShader={staticFragment}
+            />
+            eqquinox
+        </Text>
+    )
+}
+
+function PanelSphere(props) {
+    const viewport = useThree((state) => state.viewport);
     const envMap = useLoader(RGBELoader, "./src/assets/test.hdr");
     const mesh = useRef();
+    const sphereScale = window.innerWidth / 1800;
 
     useFrame(({ clock }) => {
         if (mesh.current) {
-            mesh.current.rotation.x += 0.005;
-            mesh.current.rotation.y += 0.005;
+            mesh.current.rotation.x -= 0.001;
+            mesh.current.rotation.y += 0.001;
             mesh.current.material.uniforms.time.value = clock.getElapsedTime();
         }
     }) 
@@ -57,7 +89,7 @@ function Panels() {
     };
 
     const geometry = useMemo(() => {
-        const icosahedronGeometry = new THREE.IcosahedronGeometry(1, 1);
+        const icosahedronGeometry = new THREE.IcosahedronGeometry(1, 2);
         const positions = icosahedronGeometry.getAttribute('position');
 
         const expandedGeometry = new THREE.BufferGeometry();
@@ -95,13 +127,15 @@ function Panels() {
     }, []);
 
     return (
-        <mesh ref={mesh} scale={viewport.width / 4}>
-            <bufferGeometry attach="geometry" {...geometry} />
-            <shaderMaterial 
-                uniforms={uniforms}
-                vertexShader={vertexShader}
-                fragmentShader={fragmentShader}
-            />
-        </mesh>
+        <group scale={sphereScale}>
+            <mesh ref={mesh} position={props.position}>
+                <bufferGeometry attach="geometry" {...geometry} />
+                <shaderMaterial 
+                    uniforms={uniforms}
+                    vertexShader={vertexShader}
+                    fragmentShader={fragmentShader}
+                />
+            </mesh>
+        </group>
     )
 }

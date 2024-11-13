@@ -7,7 +7,7 @@ varying vec3 worldNormal;
 varying vec3 eyeVector;
 
 void main() {
-    float wobble = simplexNoise4d(vec4(position, time * 0.5)) * 0.2;
+    float wobble = simplexNoise4d(vec4(position, time * 0.5)) * 0.175;
     vec3 wobblePos = position + normal * wobble;
 
     vec4 worldPos = modelMatrix * vec4(wobblePos, 1.0);
