@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react"
 
 export default function Works() {
     return (
@@ -15,8 +16,34 @@ export default function Works() {
 }
 
 function WorkCard(props) {
+    const ref = useRef(null); 
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    console.log(ref.current);
+                    ref.current.classList.add('animate-slideInFromLeft');
+                    console.log('working')
+                    observer.unobserve(ref.current);
+                }
+            },
+            { threshold: 0.1 }
+        );
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => {
+            if (ref.current) {
+                observer.unobserve(ref.current);
+            }
+        };
+    }, []);
+
     return (
-        <div className="py-4 my-4 border-off-white/[0.8] shadow-inset-white border rounded-[30px]">
+        <div ref={ref} className="py-4 my-4 border-off-white/[0.8] shadow-inset-white border rounded-[30px] opacity-0">
             <div className="z-10">
                 <div className="h-[100px]">
                     Image/Gif
