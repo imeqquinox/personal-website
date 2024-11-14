@@ -11,15 +11,7 @@ export default function Hero() {
         <header className="h-screen flex items-center justify-center bg-off-black">
             <Canvas camera={{ position: [0, 0, 8]}}>
                 <Rig />
-                <Text    
-                    font='/Italiana-Regular.ttf'
-                    scale={[2, 2, 1]}
-                    anchorX="center"
-                    anchorY="middle"
-                >
-                    eqquinox
-                </Text>   
-                <LineSphere />
+                <Scene />
                 <EffectComposer>
                     <ChromaticAberration 
                         blendFunction={BlendFunction.NORMAL}
@@ -77,5 +69,27 @@ function Rig() {
 
     return (
         <group ref={ref} />
+    )
+}
+
+function Scene() {
+    const viewport = useThree((state) => state.viewport);
+    const scalingFactor = Math.min(
+        Math.max(window.innerWidth / 1300, 0.6),
+        1.1
+    );
+
+    return (
+        <group scale={scalingFactor}>
+            <Text    
+                font='/Italiana-Regular.ttf'
+                scale={1.5}
+                anchorX="center"
+                anchorY="middle"
+            >
+                eqquinox
+            </Text>   
+            <LineSphere />
+        </group>
     )
 }

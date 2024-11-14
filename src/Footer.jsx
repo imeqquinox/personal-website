@@ -5,13 +5,17 @@ export default function Footer() {
     return (
         <footer className="pt-20 pb-4 px-6 flex flex-col bg-off-black [&>*]:text-off-white">
             <div className="pb-6">
-                <span className="flex">
-                    <a href="https://www.linkedin.com/in/lewiswilson98/">LinkedIn</a>
-                    <Arrow />
+                <span>
+                    <a className="flex" href="https://www.linkedin.com/in/lewiswilson98/">
+                        LinkedIn
+                        <Arrow />
+                    </a>
                 </span>
-                <span className="flex">
-                    <a href="https://github.com/imeqquinox">GitHub</a>
-                    <Arrow />
+                <span>
+                    <a className="flex" href="https://github.com/imeqquinox">
+                        GitHub
+                        <Arrow />
+                    </a>
                 </span>
             </div>
             <div className="flex flex-col pb-6">

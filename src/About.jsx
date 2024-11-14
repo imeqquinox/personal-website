@@ -27,7 +27,7 @@ export default function About() {
 
 function AnimatedElement({ children }) {
     const ref = useRef(null);
-    // TODO: Losing styling from classname above, fix
+    
     useEffect(() => {
         const observer = new IntersectionObserver(
             ([entry]) => {
