@@ -2,9 +2,9 @@ import { useEffect, useRef } from "react"
 
 export default function About() {
     return (
-        <section className="p-8 flex items-center text-center flex-col bg-off-black text-off-white">
-            <AnimatedElement><h1 className="pb-4 font-notoSans font-medium text-xl">About</h1></AnimatedElement>
-            <div className="font-roboto text-base [&>*]:pb-4">
+        <section className="p-8 sm:p-14 flex items-center text-center flex-col bg-off-black text-off-white">
+            <AnimatedElement><h1 className="pb-4 font-notoSans font-medium text-3xl sm:text-4xl lg:text-5xl">About</h1></AnimatedElement>
+            <div className="font-roboto text-base sm:text-lg lg:text-xl  [&>*]:pb-4">
                 <AnimatedElement>
                     <p>
                         Hi, I&apos;m Lewis I usually go by eqquinox online. I&apos;m a software engineer based in Edinburgh, Scotland.

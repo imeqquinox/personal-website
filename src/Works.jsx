@@ -2,10 +2,10 @@ import { useEffect, useRef } from "react"
 
 export default function Works() {
     return (
-        <section className="p-8 flex items-center text-center flex-col bg-off-black text-off-white">
-            <h1 className="pb-4 font-notoSans font-medium text-xl">Works</h1>
+        <section className="p-8 sm:p-14 flex items-center text-center flex-col bg-off-black text-off-white">
+            <h1 className="pb-4 font-notoSans font-medium text-3xl sm:text-4xl lg:text-5xl">Works</h1>
             <div className="w-full font-roboto text-base">
-                <h2>WIP</h2>
+                <h2 className="font-italiana font-medium text-2xl sm:text-3xl lg:text-4xl">WIP</h2>
                 {/* <WorkCard title={'Nano Project'} description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel luctus ipsum. Aenean aliquam massa sit amet mauris blandit luctus. Nunc tortor dui, consequat at sagittis vitae, pellentesque et nisl.'} />
                 <WorkCard title={'Nano Project'} description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel luctus ipsum. Aenean aliquam massa sit amet mauris blandit luctus. Nunc tortor dui, consequat at sagittis vitae, pellentesque et nisl.'} />
                 <WorkCard title={'Nano Project'} description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel luctus ipsum. Aenean aliquam massa sit amet mauris blandit luctus. Nunc tortor dui, consequat at sagittis vitae, pellentesque et nisl.'} />
