@@ -1,5 +1,5 @@
 import { Canvas, useThree, useFrame } from "@react-three/fiber";
-import { Line, Text  } from "@react-three/drei";
+import { Line, Text } from "@react-three/drei";
 import { ChromaticAberration } from "@react-three/postprocessing";
 import { BlendFunction } from "postprocessing";
 import { EffectComposer } from "@react-three/postprocessing";
@@ -10,7 +10,7 @@ export default function Hero() {
     return (
         <header className="h-screen flex items-center justify-center bg-off-black">
             <Canvas camera={{ position: [0, 0, 8]}}>
-                <Rig />    
+                <Rig />
                 <Text    
                     font='/Italiana-Regular.ttf'
                     scale={[2, 2, 1]}
@@ -20,8 +20,6 @@ export default function Hero() {
                     eqquinox
                 </Text>   
                 <LineSphere />
-                <ambientLight intensity={0.8} />
-                <directionalLight position={[0, 0, 5]} color="white" />
                 <EffectComposer>
                     <ChromaticAberration 
                         blendFunction={BlendFunction.NORMAL}

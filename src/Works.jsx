@@ -22,9 +22,7 @@ function WorkCard(props) {
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
-                    console.log(ref.current);
                     ref.current.classList.add('animate-slideInFromLeft');
-                    console.log('working')
                     observer.unobserve(ref.current);
                 }
             },
