@@ -7,13 +7,13 @@ export default function Footer() {
             <div className="sm:flex justify-between">
                 <div className="pb-6">
                     <span>
-                        <a className="flex" href="https://www.linkedin.com/in/lewiswilson98/">
+                        <a className="flex hover:animate-bounce" href="https://www.linkedin.com/in/lewiswilson98/">
                             LinkedIn
                             <Arrow />
                         </a>
                     </span>
                     <span>
-                        <a className="flex" href="https://github.com/imeqquinox">
+                        <a className="flex hover:animate-bounce" href="https://github.com/imeqquinox">
                             GitHub
                             <Arrow />
                         </a>
