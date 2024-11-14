@@ -9,7 +9,7 @@ export default function Works() {
                 <WorkCard title={'Nano Project'} description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel luctus ipsum. Aenean aliquam massa sit amet mauris blandit luctus. Nunc tortor dui, consequat at sagittis vitae, pellentesque et nisl.'} />
                 <WorkCard title={'Nano Project'} description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel luctus ipsum. Aenean aliquam massa sit amet mauris blandit luctus. Nunc tortor dui, consequat at sagittis vitae, pellentesque et nisl.'} />
                 <WorkCard title={'Nano Project'} description={'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vel luctus ipsum. Aenean aliquam massa sit amet mauris blandit luctus. Nunc tortor dui, consequat at sagittis vitae, pellentesque et nisl.'} />
-                <hr className="border-none mt-12 bg-off-white h-[2px] w-full shadow-[0_-5px_8px_0_rgba(0, 0, 0, 0.75)]" />
+                <hr className="border-none mt-12 h-[2px] w-full bg-white-fade" />
             </div>
         </section>
     )

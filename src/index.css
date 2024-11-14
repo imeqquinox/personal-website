@@ -6,16 +6,16 @@
 
 #cursor {
 	position: fixed;
-	width: 20px; /* Size of the cursor */
+	width: 20px;
 	height: 20px;
 	background-color: red;
-	border-radius: 50%; /* Circular shape */
-	pointer-events: none; /* Prevents the cursor from interfering with other elements */
+	border-radius: 50%;
+	pointer-events: none;
 	transform: translate(
 		-50%,
 		-50%
-	); /* Centers the cursor at the mouse position */
-	transition: transform 0.1s ease-out; /* Smooth transition */
-	filter: blur(5px); /* Blurred effect */
-	z-index: 9999; /* Ensures the cursor is on top of other content */
+	);
+	transition: transform 0.1s ease-out;
+	filter: blur(5px);
+	z-index: 9999;
 }
