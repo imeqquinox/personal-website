@@ -35,6 +35,13 @@ function useSmoothCursor() {
             targetY.current = e.clientY;
         };
 
+        var mobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+        if (mobile) {
+            if (cursorRef.current) {
+                cursorRef.current.style.display = 'none';
+            }
+        }
+
         const updateCursor = () => {
             currentX.current = lerp(currentX.current, targetX.current, 0.2);
             currentY.current = lerp(currentY.current, targetY.current, 0.2);
